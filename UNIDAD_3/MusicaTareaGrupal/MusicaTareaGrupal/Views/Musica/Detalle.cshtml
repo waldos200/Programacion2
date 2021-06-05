@@ -1,0 +1,65 @@
+﻿@model MusicaTareaGrupal.Models.Musica
+
+@{
+    ViewBag.Title = "Detalles canción";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalle</title>
+</head>
+<body>
+    <h1 style="text-align: center; font-size:40pt;">
+        <b>
+            Detalles de la canci&oacute;n    
+        </b>
+    </h1>
+    <div>
+        <br />
+        <img src="~/imagen/Album.jpeg" alt="Album" style="width: 20%; height: 20%; margin: auto; display: block;" />
+        <br />
+        <br />
+        <br />
+        <table style="width: 80%; padding-left: 35%; text-align: left; font-size:20pt;">
+            <tr>
+                <td>
+                    <b>Nombre:</b>
+                </td>
+                <td>
+                    @Model.nombre_cancion
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Artista:</b>
+                </td>
+                <td>
+                    @Model.nombre_artista
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Año:</b>
+                </td>
+                <td>
+                    @Model.anio_cancion
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <br />
+        <div class="LCAn" style="font-size:20pt; padding-left:35%; font-style:italic;">
+            @Html.ActionLink("Lista de Canciones", "Index", new { id = Model.codigo_genero })
+        </div>
+        <br />
+        <br />
+        <div class="LGen" style="font-size:20pt; padding-left:35%; font-style:italic;">
+            @Html.ActionLink("Lista de Generos", "Index", "Genero")
+        </div>
+    </div>
+</body>
+</html>

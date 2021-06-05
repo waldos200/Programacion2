@@ -1,0 +1,28 @@
+﻿@using MVCPaises.Models;
+
+@model IEnumerable<Departamento>
+
+@{
+    ViewBag.Title = "Lista de Departamentos";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Lista de Departamentos</h2>
+        @foreach (Departamento departamento in @Model)
+        {
+            <li>
+                @Html.ActionLink(departamento.NombreDepartamento, "Index",
+                "Empleado", new { id = departamento.idDepartamento }, null)
+            </li>
+        }
+    </div>
+</body>
+</html>

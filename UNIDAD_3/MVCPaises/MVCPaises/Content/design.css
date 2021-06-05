@@ -1,0 +1,9 @@
+﻿html {
+    background: radial-gradient(red, yellow, rgb(30,144,255));
+    background-attachment: fixed;
+}
+
+body {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

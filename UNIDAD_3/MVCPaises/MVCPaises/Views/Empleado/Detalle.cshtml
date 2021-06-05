@@ -1,0 +1,55 @@
+﻿@model MVCPaises.Models.Empleado
+
+@{
+    ViewBag.Title = "Detalles del empleado";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="~/Content/design.css">
+    <title>Detalle</title>
+</head>
+<body>
+    <div>
+        <h2>Detalles del empleado</h2>
+        <table>
+            <tr>
+                <td>
+                    <b>ID Empleado:</b>
+                </td>
+                <td>
+                    @Model.IDEmpleado
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Nombre:</b>
+                </td>
+                <td>
+                    @Model.Nombre
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Género</b>
+                </td>
+                <td>
+                    @Model.Genero
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Ciudad:</b>
+                </td>
+                <td>
+                    @Model.Ciudad
+                </td>
+            </tr>
+        </table>
+        @Html.ActionLink("Lista de Empleados", "Index", new { id = Model.idDepartamento })
+    </div>
+</body>
+</html>

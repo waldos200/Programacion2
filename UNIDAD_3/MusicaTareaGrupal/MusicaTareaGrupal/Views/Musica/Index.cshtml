@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MusicaTareaGrupal.Models.Musica>
+
+@using MusicaTareaGrupal.Models;
+
+@{
+    ViewBag.Title = "Lista de Musica";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h1 style="text-align: center; font-size:40pt;">
+        <b>
+            Lista de Canciones
+        </b>
+    </h1>
+    <img src="~/imagen/Canciones.jpeg" alt="Canciones" style="width: 23%; height: 23%; margin: auto; display: block;"/>
+    <div style="padding-left:35%; font-size:20pt;">
+        <ul>
+            @foreach (Musica musica in @Model)
+            {
+                <li>
+                    @Html.ActionLink(musica.nombre_cancion, "Detalle", new { id = musica.codigo_cancion }) 
+                </li>
+                <br />
+            }
+        </ul>
+    </div>
+    <div style="font-size:20pt; padding-left:35%; font-style:italic;">
+        @Html.ActionLink("Lista de Generos", "Index", "Genero")
+    </div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿@model Parcial3.Models.Fideos
+
+@{
+    ViewBag.Title = "Detalle de reseta con fideos";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalle</title>
+</head>
+<body>
+    <div>
+        <h2>
+            Detalle de resetas con fideos
+        </h2>
+        <table>
+            <tr>
+                <td>
+                    <b>ID:</b>
+                </td>
+                <td>
+                    @Model.Id
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Nombre:</b>
+                </td>
+                <td>
+                    @Model.Nombre
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Ingredientes: </b>
+                </td>
+                <td>
+                    @Model.Ingredientes
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Elaboracion:</b>
+                </td>
+                <td>
+                    @Model.Elaboracion
+                </td>
+            </tr>
+        </table>
+        @Html.ActionLink("Lista de Resetas", "Index")
+    </div>
+</body>
+</html>

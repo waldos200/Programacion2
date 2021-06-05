@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Parcial3.Models.Fideos>
+
+@using Parcial3.Models;
+
+@{
+    ViewBag.Title = "Lista de Resetas con fideos";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>
+            Lista de resetas con fideos
+        </h2>
+        <ul>
+            @foreach (Fideos fideos in @Model)
+            {
+                <li>
+                    @Html.ActionLink(fideos.Nombre, "Detalle", new { id = fideos.Id })
+                </li>
+            }
+        </ul>
+    </div>
+</body>
+</html>
