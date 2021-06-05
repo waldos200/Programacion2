@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Business" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Business;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="BusinessConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Product" Member="Product">
+    <Type Name="Product">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ProductName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="SupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Column Name="Package" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="IsDiscontinued" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Product_OrderItem" Member="OrderItem" ThisKey="Id" OtherKey="ProductId" Type="OrderItem" />
+      <Association Name="Supplier_Product" Member="Supplier" ThisKey="SupplierId" OtherKey="Id" Type="Supplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Customer" Member="Customer">
+    <Type Name="Customer">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="Customer_Order" Member="Order" ThisKey="Id" OtherKey="CustomerId" Type="Order" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[Order]" Member="Order">
+    <Type Name="Order">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="OrderNumber" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="CustomerId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TotalAmount" Type="System.Decimal" DbType="Decimal(12,2)" CanBeNull="true" />
+      <Association Name="Order_OrderItem" Member="OrderItem" ThisKey="Id" OtherKey="OrderId" Type="OrderItem" />
+      <Association Name="Customer_Order" Member="Customer" ThisKey="CustomerId" OtherKey="Id" Type="Customer" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OrderItem" Member="OrderItem">
+    <Type Name="OrderItem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrderId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProductId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(12,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Order_OrderItem" Member="Order" ThisKey="OrderId" OtherKey="Id" Type="Order" IsForeignKey="true" />
+      <Association Name="Product_OrderItem" Member="Product" ThisKey="ProductId" OtherKey="Id" Type="Product" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Supplier" Member="Supplier">
+    <Type Name="Supplier">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CompanyName" Type="System.String" DbType="NVarChar(40) NOT NULL" CanBeNull="false" />
+      <Column Name="ContactName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ContactTitle" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Country" Type="System.String" DbType="NVarChar(40)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Fax" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Association Name="Supplier_Product" Member="Product" ThisKey="Id" OtherKey="SupplierId" Type="Product" />
+    </Type>
+  </Table>
+</Database>

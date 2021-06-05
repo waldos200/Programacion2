@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Muestra3" Class="DatosDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Muestra3;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Muestra3ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Empleado" Member="Empleado">
+    <Type Name="Empleado" Modifier="Abstract">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Discriminador" Type="System.String" DbType="NVarChar(12) NOT NULL" CanBeNull="false" IsDiscriminator="true" />
+      <Type Name="EmpleadoPermanente" InheritanceCode="Permanente">
+        <Column Name="SalarioAnual" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      </Type>
+      <Type Name="EmpleadoXContrato" InheritanceCode="Contrato" IsInheritanceDefault="true">
+        <Column Name="PagoXHora" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+        <Column Name="HorasXSemana" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      </Type>
+    </Type>
+  </Table>
+</Database>

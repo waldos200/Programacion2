@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Muestra2" Class="MuestraDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Muestra2;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="Muestra2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Departamentos" Member="Departamentos">
+    <Type Name="Departamentos">
+      <Column Name="idDept" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Departamento" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Ubicacion" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="Departamentos_Empleados" Member="Empleados" ThisKey="idDept" OtherKey="idDept" Type="Empleados" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Empleados" Member="Empleados">
+    <Type Name="Empleados">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Departamentos_Empleados" Member="Departamentos" ThisKey="idDept" OtherKey="idDept" Type="Departamentos" IsForeignKey="true" />
+    </Type>
+    <InsertFunction FunctionId="FunctionId1">
+      <Argument Parameter="idEmp" Member="idEmp" />
+      <Argument Parameter="nombre" Member="Nombre" />
+      <Argument Parameter="apellido" Member="Apellido" />
+      <Argument Parameter="genero" Member="Genero" />
+      <Argument Parameter="salario" Member="Salario" />
+      <Argument Parameter="idDept" Member="idDept" />
+    </InsertFunction>
+    <UpdateFunction FunctionId="FunctionId2">
+      <Argument Parameter="idEmp" Member="idEmp" />
+      <Argument Parameter="nombre" Member="Nombre" />
+      <Argument Parameter="apellido" Member="Apellido" />
+      <Argument Parameter="genero" Member="Genero" />
+      <Argument Parameter="salario" Member="Salario" />
+      <Argument Parameter="idDept" Member="idDept" />
+    </UpdateFunction>
+    <DeleteFunction FunctionId="FunctionId3">
+      <Argument Parameter="idEmp" Member="idEmp" />
+    </DeleteFunction>
+  </Table>
+  <Function Name="dbo.obtenerEmpleado" Method="obtenerEmpleado">
+    <ElementType Name="obtenerEmpleadoResult">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Id="FunctionId1" Name="dbo.insertarEmpleado" Method="insertarEmpleado">
+    <Parameter Name="idEmp" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Genero" Parameter="genero" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Decimal(7,2)" />
+    <Parameter Name="idDept" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Id="FunctionId3" Name="dbo.borrarEmpleado" Method="borrarEmpleado">
+    <Parameter Name="idEmp" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Id="FunctionId2" Name="dbo.actualizarEmpleado" Method="actualizarEmpleado">
+    <Parameter Name="idEmp" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Apellido" Parameter="apellido" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Genero" Parameter="genero" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Salario" Parameter="salario" Type="System.Decimal" DbType="Decimal(7,2)" />
+    <Parameter Name="idDept" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.EmpleadosPorDepto" Method="EmpleadosPorDepto">
+    <Parameter Name="idDept" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Departamento" Parameter="departamento" Type="System.String" DbType="NVarChar(50)" Direction="InOut" />
+    <ElementType Name="EmpleadosPorDeptoResult">
+      <Column Name="idEmp" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Apellido" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Genero" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Salario" Type="System.Decimal" DbType="Money NOT NULL" CanBeNull="false" />
+      <Column Name="idDept" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>
