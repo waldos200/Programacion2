@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="Parcial2.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            text-align: center;
+        }
+        .auto-style2 {
+            width: 10%;
+            text-align: center;
+            vertical-align: top;
+        }
+        .auto-style3 {
+            width: 90%;
+            text-align: left;
+            vertical-align: top;
+        }
+        body {
+            background: linear-gradient(to right, #ADDFFF, #1F45FC);
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table class="auto-style1">
+                <tr>
+                    <td colspan="2" class="auto-style1">
+                        <asp:Label ID="lblTitulo" runat="server" Font-Bold="true" Font-Size="XX-Large" Text="Libros"></asp:Label>
+                        <br />
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="auto-style2">
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Default.aspx">Inicio</asp:HyperLink>
+                        <br />
+                        <br />
+                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Imagenes.aspx">Imagenes</asp:HyperLink>
+                        <br />
+                        <br />
+                        <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/Operaciones.aspx">CRUD</asp:HyperLink>
+                        <br />
+                        <br />
+                        <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/CV.aspx">CV</asp:HyperLink>
+                    </td>
+                    <td class="auto-style3">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>
